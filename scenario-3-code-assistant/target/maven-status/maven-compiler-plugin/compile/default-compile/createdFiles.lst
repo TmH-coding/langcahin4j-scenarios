@@ -1,0 +1,11 @@
+com\langchain4j\scenarios\scenario3\model\CodeReviewRequest.class
+com\langchain4j\scenarios\scenario3\service\CodeReviewHistoryManager$ReviewRecord$ReviewRecordBuilder.class
+com\langchain4j\scenarios\scenario3\example\CodeAssistantExample.class
+com\langchain4j\scenarios\scenario3\model\CodeReviewRequest$CodeReviewRequestBuilder.class
+com\langchain4j\scenarios\scenario3\service\CodeAssistantService.class
+com\langchain4j\scenarios\scenario3\controller\CodeAssistantController.class
+com\langchain4j\scenarios\scenario3\model\CodeReviewResult.class
+com\langchain4j\scenarios\scenario3\service\CodeReviewHistoryManager$ReviewRecord.class
+com\langchain4j\scenarios\scenario3\CodeAssistantApplication.class
+com\langchain4j\scenarios\scenario3\model\CodeReviewResult$CodeReviewResultBuilder.class
+com\langchain4j\scenarios\scenario3\service\CodeReviewHistoryManager.class

@@ -1,0 +1,28 @@
+# RabbitMQ 开发环境配置
+spring:
+  rabbitmq:
+    enabled: true
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    connection-timeout: 10000
+
+    # 发布者配置
+    publisher-confirms: true
+    publisher-returns: true
+
+    # 监听器配置
+    listener:
+      simple:
+        acknowledge-mode: auto
+        concurrency: 5
+        max-concurrency: 10
+        prefetch: 1
+        retry:
+          enabled: true
+          initial-interval: 1000
+          max-interval: 10000
+          multiplier: 2.0
+          max-attempts: 3

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="scenario-1-customer-service" />
+        <module name="scenario-5-content-creator" />
+        <module name="common" />
+        <module name="scenario-3-code-assistant" />
+        <module name="scenario-2-document-analysis" />
+        <module name="scenario-4-data-analyst" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

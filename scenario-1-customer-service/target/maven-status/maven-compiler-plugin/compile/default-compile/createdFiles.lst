@@ -1,0 +1,11 @@
+com\langchain4j\scenarios\scenario1\example\CustomerServiceExample.class
+com\langchain4j\scenarios\scenario1\service\CustomerServiceAI.class
+com\langchain4j\scenarios\scenario1\service\SessionManager.class
+com\langchain4j\scenarios\scenario1\controller\StreamingController.class
+com\langchain4j\scenarios\scenario1\model\ChatRequest.class
+com\langchain4j\scenarios\scenario1\controller\StreamingController$1.class
+com\langchain4j\scenarios\scenario1\model\ChatRequest$ChatRequestBuilder.class
+com\langchain4j\scenarios\scenario1\CustomerServiceApplication.class
+com\langchain4j\scenarios\scenario1\model\ChatResponse$ChatResponseBuilder.class
+com\langchain4j\scenarios\scenario1\model\ChatResponse.class
+com\langchain4j\scenarios\scenario1\controller\CustomerServiceController.class

@@ -1,0 +1,14 @@
+# 分布式追踪生产环境配置
+spring:
+  application:
+    name: langchain4j-scenarios
+
+logging:
+  level:
+    org.springframework.cloud.sleuth: INFO
+    brave: INFO
+
+management:
+  tracing:
+    sampling:
+      probability: 0.1  # 生产环境采样10%

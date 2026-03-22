@@ -1,0 +1,9 @@
+com\langchain4j\scenarios\scenario4\service\QueryExecutionTracker$QueryRecord$QueryRecordBuilder.class
+com\langchain4j\scenarios\scenario4\service\DataAnalystService.class
+com\langchain4j\scenarios\scenario4\model\QueryAnalysisResult$QueryAnalysisResultBuilder.class
+com\langchain4j\scenarios\scenario4\model\QueryAnalysisResult.class
+com\langchain4j\scenarios\scenario4\DataAnalystApplication.class
+com\langchain4j\scenarios\scenario4\service\QueryExecutionTracker.class
+com\langchain4j\scenarios\scenario4\controller\DataAnalystController.class
+com\langchain4j\scenarios\scenario4\example\DataAnalystExample.class
+com\langchain4j\scenarios\scenario4\service\QueryExecutionTracker$QueryRecord.class

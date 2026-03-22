@@ -1,0 +1,30 @@
+# Nacos 开发环境配置
+spring:
+  cloud:
+    nacos:
+      # 配置中心
+      config:
+        enabled: true
+        server-addr: localhost:8848
+        namespace: dev
+        group: DEFAULT_GROUP
+        file-extension: yml
+        auto-refresh: true
+        max-retry: 3
+        config-retry-time: 2000
+        config-long-poll-timeout: 46000
+
+      # 服务发现
+      discovery:
+        enabled: true
+        server-addr: localhost:8848
+        namespace: dev
+        group: DEFAULT_GROUP
+        register-enabled: true
+        ip: 127.0.0.1
+        port: 8081
+        watch-delay: 30000
+
+logging:
+  level:
+    com.alibaba.nacos: DEBUG

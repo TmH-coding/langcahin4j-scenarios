@@ -1,0 +1,13 @@
+# Flyway 开发环境配置
+spring:
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    out-of-order: false
+    validate-on-migrate: true
+    clean-disabled: false  # 开发环境允许清理
+
+logging:
+  level:
+    org.flywaydb: DEBUG

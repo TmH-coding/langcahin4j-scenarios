@@ -1,0 +1,9 @@
+com\langchain4j\scenarios\scenario5\model\ContentGenerationResult$ContentGenerationResultBuilder.class
+com\langchain4j\scenarios\scenario5\service\ContentGenerationStatistics$GenerationRecord.class
+com\langchain4j\scenarios\scenario5\service\ContentGenerationStatistics$GenerationRecord$GenerationRecordBuilder.class
+com\langchain4j\scenarios\scenario5\service\ContentGenerationStatistics.class
+com\langchain4j\scenarios\scenario5\controller\ContentCreatorController.class
+com\langchain4j\scenarios\scenario5\service\ContentCreatorService.class
+com\langchain4j\scenarios\scenario5\example\ContentCreatorExample.class
+com\langchain4j\scenarios\scenario5\model\ContentGenerationResult.class
+com\langchain4j\scenarios\scenario5\ContentCreatorApplication.class

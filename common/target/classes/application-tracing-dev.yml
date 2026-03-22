@@ -1,0 +1,14 @@
+# 分布式追踪开发环境配置
+spring:
+  application:
+    name: langchain4j-scenarios
+
+logging:
+  level:
+    org.springframework.cloud.sleuth: DEBUG
+    brave: DEBUG
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0  # 开发环境采样100%

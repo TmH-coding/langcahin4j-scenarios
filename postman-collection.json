@@ -1,0 +1,269 @@
+{
+  "info": {
+    "name": "LangChain4j Scenarios",
+    "description": "API collection for all 5 LangChain4j scenarios",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Scenario 1: Customer Service",
+      "item": [
+        {
+          "name": "Chat",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/customer-service/chat?message=你好，我想了解你们的服务",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["api", "customer-service", "chat"],
+              "query": [
+                {
+                  "key": "message",
+                  "value": "你好，我想了解你们的服务"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/customer-service/history",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["api", "customer-service", "history"]
+            }
+          }
+        },
+        {
+          "name": "Clear History",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/customer-service/clear",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8081",
+              "path": ["api", "customer-service", "clear"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scenario 3: Code Assistant",
+      "item": [
+        {
+          "name": "Review Code",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/api/code-assistant/review?code=public class Hello { public static void main(String[] args) { System.out.println(\"Hello\"); } }&language=java",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["api", "code-assistant", "review"],
+              "query": [
+                {
+                  "key": "code",
+                  "value": "public class Hello { public static void main(String[] args) { System.out.println(\"Hello\"); } }"
+                },
+                {
+                  "key": "language",
+                  "value": "java"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Explain Code",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/api/code-assistant/explain?code=public class Hello { public static void main(String[] args) { System.out.println(\"Hello\"); } }&language=java",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["api", "code-assistant", "explain"],
+              "query": [
+                {
+                  "key": "code",
+                  "value": "public class Hello { public static void main(String[] args) { System.out.println(\"Hello\"); } }"
+                },
+                {
+                  "key": "language",
+                  "value": "java"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Detect Bugs",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/api/code-assistant/bugs?code=public class Test { public void divide(int a, int b) { int result = a / b; } }&language=java",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8083",
+              "path": ["api", "code-assistant", "bugs"],
+              "query": [
+                {
+                  "key": "code",
+                  "value": "public class Test { public void divide(int a, int b) { int result = a / b; } }"
+                },
+                {
+                  "key": "language",
+                  "value": "java"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scenario 4: Data Analyst",
+      "item": [
+        {
+          "name": "Generate SQL",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8084/api/data-analyst/generate-sql?requirement=查询所有用户&schema=CREATE TABLE users (id INT, name VARCHAR(100), email VARCHAR(100))",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8084",
+              "path": ["api", "data-analyst", "generate-sql"],
+              "query": [
+                {
+                  "key": "requirement",
+                  "value": "查询所有用户"
+                },
+                {
+                  "key": "schema",
+                  "value": "CREATE TABLE users (id INT, name VARCHAR(100), email VARCHAR(100))"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Explain Query",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8084/api/data-analyst/explain-query?query=SELECT * FROM users WHERE age > 18",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8084",
+              "path": ["api", "data-analyst", "explain-query"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "SELECT * FROM users WHERE age > 18"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scenario 5: Content Creator",
+      "item": [
+        {
+          "name": "Generate Article",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8085/api/content-creator/generate-article?topic=人工智能&style=professional&wordCount=500",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8085",
+              "path": ["api", "content-creator", "generate-article"],
+              "query": [
+                {
+                  "key": "topic",
+                  "value": "人工智能"
+                },
+                {
+                  "key": "style",
+                  "value": "professional"
+                },
+                {
+                  "key": "wordCount",
+                  "value": "500"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Generate Social Posts",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8085/api/content-creator/social-posts?topic=AI&postCount=3",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8085",
+              "path": ["api", "content-creator", "social-posts"],
+              "query": [
+                {
+                  "key": "topic",
+                  "value": "AI"
+                },
+                {
+                  "key": "postCount",
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Translate Content",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8085/api/content-creator/translate?content=Hello World&targetLanguage=Chinese",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8085",
+              "path": ["api", "content-creator", "translate"],
+              "query": [
+                {
+                  "key": "content",
+                  "value": "Hello World"
+                },
+                {
+                  "key": "targetLanguage",
+                  "value": "Chinese"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+com\langchain4j\scenarios\scenario2\controller\DocumentAnalysisController.class
+com\langchain4j\scenarios\scenario2\service\DocumentCacheManager$DocumentMetadata.class
+com\langchain4j\scenarios\scenario2\example\DocumentAnalysisExample.class
+com\langchain4j\scenarios\scenario2\service\DocumentCacheManager.class
+com\langchain4j\scenarios\scenario2\model\DocumentLoadRequest$DocumentLoadRequestBuilder.class
+com\langchain4j\scenarios\scenario2\model\DocumentQueryResponse$DocumentQueryResponseBuilder.class
+com\langchain4j\scenarios\scenario2\model\DocumentLoadRequest.class
+com\langchain4j\scenarios\scenario2\model\DocumentQueryResponse.class
+com\langchain4j\scenarios\scenario2\service\DocumentAnalysisService.class
+com\langchain4j\scenarios\scenario2\service\DocumentCacheManager$DocumentMetadata$DocumentMetadataBuilder.class
+com\langchain4j\scenarios\scenario2\DocumentAnalysisApplication.class
