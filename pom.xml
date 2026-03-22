@@ -22,6 +22,7 @@
         <module>scenario-5-content-creator</module>
         <module>scenario-6-intelligent-agent</module>
         <module>scenario-7-mcp-protocol</module>
+        <module>scenario-8-vector-database</module>
     </modules>
 
     <properties>
@@ -82,6 +83,16 @@
             <dependency>
                 <groupId>dev.langchain4j</groupId>
                 <artifactId>langchain4j-milvus</artifactId>
+                <version>${langchain4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.langchain4j</groupId>
+                <artifactId>langchain4j-qdrant</artifactId>
+                <version>${langchain4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.langchain4j</groupId>
+                <artifactId>langchain4j-weaviate</artifactId>
                 <version>${langchain4j.version}</version>
             </dependency>
 

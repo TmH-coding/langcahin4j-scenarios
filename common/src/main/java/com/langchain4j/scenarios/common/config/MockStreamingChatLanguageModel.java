@@ -19,7 +19,7 @@ public class MockStreamingChatLanguageModel implements StreamingChatLanguageMode
         String userMessage = "";
         for (int i = messages.size() - 1; i >= 0; i--) {
             ChatMessage msg = messages.get(i);
-            if (msg.type().toString().equals("USER")) {
+            if (msg instanceof dev.langchain4j.data.message.UserMessage) {
                 userMessage = msg.text();
                 break;
             }
