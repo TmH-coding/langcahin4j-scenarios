@@ -20,6 +20,8 @@
         <module>scenario-3-code-assistant</module>
         <module>scenario-4-data-analyst</module>
         <module>scenario-5-content-creator</module>
+        <module>scenario-6-intelligent-agent</module>
+        <module>scenario-7-mcp-protocol</module>
     </modules>
 
     <properties>
