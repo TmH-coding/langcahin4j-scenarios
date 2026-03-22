@@ -1,7 +1,9 @@
 package com.langchain4j.scenarios.scenario6.tool;
 
+import com.langchain4j.scenarios.scenario6.rag.AgentRagService;
 import dev.langchain4j.agent.tool.Tool;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -36,6 +38,9 @@ import java.util.*;
 @Slf4j
 @Component
 public class AgentTools {
+
+    @Autowired
+    private AgentRagService agentRagService;
 
     /**
      * 工具1：获取当前时间
@@ -262,6 +267,59 @@ public class AgentTools {
         } catch (Exception e) {
             log.error("Data analysis error", e);
             return "数据分析失败: " + e.getMessage();
+        }
+    }
+
+    /**
+     * 工具7：搜索文档库 - 基于语义向量检索的 RAG 工具
+     *
+     * 使用场景：
+     * - 用户问"产品手册里关于退款的规定是什么？"
+     * - 用户问"根据公司政策，员工请假需要几天前申请？"
+     * - 用户问"查询知识库中关于XX的信息"
+     *
+     * 参数说明：
+     * - query: 自然语言查询（不需要精确关键词，支持语义搜索）
+     *
+     * 工作原理（RAG 流程）：
+     * 1. LLM 识别用户需要查询文档库
+     * 2. LLM 调用此工具，传入用户问题作为 query
+     * 3. 工具将 query 向量化（用 AllMiniLmL6V2 模型）
+     * 4. 在向量库中找到语义最相近的 3 个段落
+     * 5. 返回这些段落文本给 LLM
+     * 6. LLM 基于这些上下文生成最终答案
+     *
+     * 与关键词搜索的区别：
+     * - 关键词："退款" 只能找含"退款"两字的段落
+     * - 语义搜索："退款" 可以找到含"退还费用"、"返还金额"的段落
+     */
+    @Tool("在知识库文档中搜索相关信息，支持语义理解，适合回答基于文档的问题")
+    public String searchDocumentLibrary(String query) {
+        log.info("Tool called: searchDocumentLibrary, query: {}", query);
+
+        try {
+            // 检索最多 3 个最相关段落
+            List<String> segments = agentRagService.search(query, 3);
+
+            if (segments.isEmpty() || segments.get(0).contains("文档库为空")) {
+                return segments.isEmpty() ? "文档库为空，请先上传文档到知识库。" : segments.get(0);
+            }
+
+            // 将多个段落合并为结构化返回值，让 LLM 能够利用所有上下文
+            StringBuilder result = new StringBuilder();
+            result.append("【文档库检索结果】共找到 ").append(segments.size()).append(" 个相关段落：\n\n");
+            for (int i = 0; i < segments.size(); i++) {
+                result.append("段落").append(i + 1).append("：\n");
+                result.append(segments.get(i)).append("\n\n");
+            }
+            result.append("请根据以上文档内容回答用户的问题。");
+
+            log.info("searchDocumentLibrary returned {} segments for query: {}", segments.size(), query);
+            return result.toString();
+
+        } catch (Exception e) {
+            log.error("searchDocumentLibrary error", e);
+            return "文档库搜索失败: " + e.getMessage();
         }
     }
 }

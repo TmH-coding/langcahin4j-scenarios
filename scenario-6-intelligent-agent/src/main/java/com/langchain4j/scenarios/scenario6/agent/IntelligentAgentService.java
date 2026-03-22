@@ -1,5 +1,6 @@
 package com.langchain4j.scenarios.scenario6.agent;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.langchain4j.scenarios.scenario6.tool.AgentTools;
 import dev.langchain4j.agent.tool.ToolExecutionRequest;
 import dev.langchain4j.agent.tool.ToolSpecification;
@@ -92,6 +93,7 @@ public class IntelligentAgentService {
             4. 查询天气信息
             5. 发送邮件
             6. 分析数据
+            7. 搜索知识库文档（RAG 检索）
 
             你的职责是：
             - 理解用户的需求
@@ -104,6 +106,7 @@ public class IntelligentAgentService {
             - 如果需要信息，先调用相应的工具获取
             - 不要猜测或编造数据
             - 如果工具返回错误，尝试用其他方式解决
+            - 当用户询问与已上传文档相关的内容时，优先调用 searchDocumentLibrary 工具
             - 始终诚实地告诉用户你的能力限制
             - 用中文回复用户
             """;
@@ -223,6 +226,11 @@ public class IntelligentAgentService {
                     String dataType = (String) args.get("dataType");
                     yield agentTools.analyzeData(dataType);
                 }
+                case "searchDocumentLibrary" -> {
+                    Map<String, Object> args = parseJsonArguments(toolArguments);
+                    String query = (String) args.get("query");
+                    yield agentTools.searchDocumentLibrary(query);
+                }
                 default -> "未知的工具: " + toolName;
             };
         } catch (Exception e) {
@@ -238,11 +246,17 @@ public class IntelligentAgentService {
      * @return 解析后的参数 Map
      */
     private Map<String, Object> parseJsonArguments(String jsonArguments) {
-        // 简化实现，实际应使用 Jackson 或 Gson
-        Map<String, Object> args = new HashMap<>();
-        // 这里应该使用 JSON 解析库，但为了简化示例，使用简单的字符串处理
-        // 实际应用中应使用 ObjectMapper 或类似的库
-        return args;
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            if (jsonArguments == null || jsonArguments.isBlank()) {
+                return new HashMap<>();
+            }
+            return objectMapper.readValue(jsonArguments,
+                    new com.fasterxml.jackson.core.type.TypeReference<Map<String, Object>>() {});
+        } catch (Exception e) {
+            log.error("Failed to parse tool arguments: {}", jsonArguments, e);
+            return new HashMap<>();
+        }
     }
 
     /**
@@ -260,7 +274,8 @@ public class IntelligentAgentService {
                 "queryUserInfo - 查询用户信息",
                 "queryWeather - 查询天气信息",
                 "sendEmail - 发送邮件",
-                "analyzeData - 分析数据（sales, users, revenue）"
+                "analyzeData - 分析数据（sales, users, revenue）",
+                "searchDocumentLibrary - 搜索知识库文档（RAG 语义检索）"
         );
     }
 
@@ -277,7 +292,9 @@ public class IntelligentAgentService {
                 "例子4: 北京今天天气怎么样？",
                 "例子5: 帮我给 zhangsan@example.com 发邮件，主题是'会议通知'，内容是'明天下午3点开会'",
                 "例子6: 分析销售数据并告诉我增长率",
-                "例子7: 查询用户 user456 的邮箱，然后给他发邮件说'您的账户已激活'"
+                "例子7: 查询用户 user456 的邮箱，然后给他发邮件说'您的账户已激活'",
+                "例子8: 根据知识库，产品的退款政策是什么？",
+                "例子9: 搜索文档库中关于员工福利的内容"
         );
     }
 }

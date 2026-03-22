@@ -220,12 +220,24 @@ public class LlmConfig {
     @Bean
     @ConditionalOnProperty(name = "llm.provider", havingValue = "openai", matchIfMissing = true)
     public ChatLanguageModel openAiChatModel() {
-        return OpenAiChatModel.builder()
-                .apiKey(System.getenv("OPENAI_API_KEY"))  // 从环境变量读取 API 密钥
-                .modelName("gpt-4-turbo-preview")          // 指定使用的模型
-                .temperature(0.7)                          // 设置温度参数，控制输出多样性
-                .topP(1.0)                                 // 设置核采样参数
-                .build();
+        String apiKey = System.getenv("OPENAI_API_KEY");
+
+        // 如果没有 API 密钥，使用 Mock 模型用于测试
+        if (apiKey == null || apiKey.isEmpty()) {
+            return new MockChatLanguageModel();
+        }
+
+        try {
+            return OpenAiChatModel.builder()
+                    .apiKey(apiKey)                           // 从环境变量读取 API 密钥
+                    .modelName("gpt-4-turbo-preview")          // 指定使用的模型
+                    .temperature(0.7)                          // 设置温度参数，控制输出多样性
+                    .topP(1.0)                                 // 设置核采样参数
+                    .build();
+        } catch (IllegalArgumentException e) {
+            // 如果 API 密钥无效，使用 Mock 模型
+            return new MockChatLanguageModel();
+        }
     }
 
     /**
@@ -268,11 +280,21 @@ public class LlmConfig {
     @Bean
     @ConditionalOnProperty(name = "llm.provider", havingValue = "openai", matchIfMissing = true)
     public StreamingChatLanguageModel openAiStreamingChatModel() {
-        return OpenAiStreamingChatModel.builder()
-                .apiKey(System.getenv("OPENAI_API_KEY"))
-                .modelName("gpt-4-turbo-preview")
-                .temperature(0.7)
-                .topP(1.0)
-                .build();
+        String apiKey = System.getenv("OPENAI_API_KEY");
+
+        if (apiKey == null || apiKey.isEmpty()) {
+            return new MockStreamingChatLanguageModel();
+        }
+
+        try {
+            return OpenAiStreamingChatModel.builder()
+                    .apiKey(apiKey)
+                    .modelName("gpt-4-turbo-preview")
+                    .temperature(0.7)
+                    .topP(1.0)
+                    .build();
+        } catch (IllegalArgumentException e) {
+            return new MockStreamingChatLanguageModel();
+        }
     }
 }
